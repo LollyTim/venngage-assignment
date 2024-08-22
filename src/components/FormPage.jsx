@@ -18,7 +18,6 @@ const FormPage = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // Retrieve data from local storage if it exists
     const storedData = localStorage.getItem("formData");
     if (storedData) {
       setFormData(JSON.parse(storedData));
@@ -186,7 +185,7 @@ const FormPage = () => {
   );
 };
 
-const InputField = ({ id, label, value, onChange }) => (
+const InputField = ({ id, name, label, value, onChange }) => (
   <div>
     <label
       htmlFor={id}
@@ -197,6 +196,7 @@ const InputField = ({ id, label, value, onChange }) => (
     <input
       type="text"
       id={id}
+      name={name}
       value={value}
       onChange={onChange}
       placeholder={`Your ${label}`}
@@ -229,16 +229,28 @@ const Skills = ({ skills, handleSkillChange, addSkill, removeSkill }) => (
       >
         <InputField
           id={`skill-label-${index}`}
+          name="label"
           label="Skill Label"
           value={skill.label}
           onChange={(e) => handleSkillChange(index, e)}
         />
-        <InputField
-          id={`skill-experience-${index}`}
-          label="Skill Experience (years)"
-          value={skill.experience}
-          onChange={(e) => handleSkillChange(index, e)}
-        />
+        <div>
+          <label
+            htmlFor={`skill-experience-${index}`}
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Skill Experience (years)
+          </label>
+
+          <input
+            className="w-full border rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+            id={`skill-experience-${index}`}
+            name="experience"
+            type="number"
+            value={skill.experience}
+            onChange={(e) => handleSkillChange(index, e)}
+          />
+        </div>
         <button
           type="button"
           onClick={() => removeSkill(index)}
@@ -278,6 +290,7 @@ const Experience = ({
       >
         <InputField
           id={`experience-company-${index}`}
+          name="company"
           label="Company Name"
           value={experience.company}
           onChange={(e) => handleExperienceChange(index, e)}
