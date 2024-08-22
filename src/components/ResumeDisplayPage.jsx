@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SkillGraph } from "./SkillsGraph";
 import { TbWorldWww } from "react-icons/tb";
-import { FaInstagramSquare, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { FcPhoneAndroid } from "react-icons/fc";
 import { ImInstagram } from "react-icons/im";
 import { AiFillMail } from "react-icons/ai";
