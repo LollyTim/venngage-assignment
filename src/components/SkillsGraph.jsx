@@ -45,7 +45,7 @@ export const SkillGraph = () => {
         .slice(1)
         .map((node) => (
           <circle
-            key={node.data.label} // Using node.data since d3.hierarchy wraps the original data
+            key={node.data.label}
             cx={node.x}
             cy={node.y}
             r={node.r}
